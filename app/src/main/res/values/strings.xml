@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">PortalMobileForMe</string>
+    <string name="lecture_period_duration">%1$s～%2$s</string>
+    <string name="current_lecture_title_description">現在の講義</string>
+    <string name="current_lecture_period_description">講義の時間帯</string>
+    <string name="no_lecture_title">タイトル不明な講義</string>
+    <string name="lecture_title_description">講義のタイトル</string>
+    <string name="lecture_password_description">講義のパスワード</string>
+    <string name="lecture_password_send_description">ポータルに送信</string>
+    <string name="period_time_failed_format">"??:??"</string>
+    <string name="lecture_password_validate_rule">半角英数字4文字</string>
+
+    <string name="navigation_text_home">ホーム</string>
+    <string name="navigation_text_settings">設定</string>
+</resources>

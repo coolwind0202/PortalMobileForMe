@@ -13,7 +13,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
@@ -31,7 +30,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -51,20 +49,26 @@ class MainActivity : ComponentActivity() {
                     bottomBar = {
                         NavigationBar {
                             NavigationBarItem(
-                                icon={
-                                    Icon(imageVector = Icons.Default.Home, contentDescription = null)
+                                icon = {
+                                    Icon(
+                                        imageVector = Icons.Default.Home,
+                                        contentDescription = null
+                                    )
                                 },
-                                label={
+                                label = {
                                     Text(LocalContext.current.getString(R.string.navigation_text_home))
                                 },
                                 onClick = {},
                                 selected = true
                             )
                             NavigationBarItem(
-                                icon={
-                                    Icon(imageVector = Icons.Default.Settings, contentDescription = null)
+                                icon = {
+                                    Icon(
+                                        imageVector = Icons.Default.Settings,
+                                        contentDescription = null
+                                    )
                                 },
-                                label= {
+                                label = {
                                     Text(LocalContext.current.getString(R.string.navigation_text_settings))
                                 },
                                 onClick = {},
@@ -151,7 +155,7 @@ fun LectureTitleText(title: String) {
         )
     else Text(
         text = title,
-        style=MaterialTheme.typography.titleLarge,
+        style = MaterialTheme.typography.titleLarge,
         modifier = Modifier.semantics { contentDescription = lectureTitleDescription }
     )
 }
@@ -169,12 +173,15 @@ fun LecturePasswordInput(onPasswordEntered: (String) -> Unit) {
     val passwordLengthIsValid = unEnteredPassword.value.length == 4
 
     TextField(
-        value=unEnteredPassword.value,
-        onValueChange={unEnteredPassword.value=it},
+        value = unEnteredPassword.value,
+        onValueChange = { unEnteredPassword.value = it },
         label = { Text(text = LocalContext.current.getString(R.string.lecture_password_description)) },
         trailingIcon = {
-            IconButton(onClick={ onPasswordEntered(unEnteredPassword.value) }) {
-                Icon(imageVector = Icons.AutoMirrored.Filled.Send, contentDescription = LocalContext.current.getString(R.string.lecture_password_send_description))
+            IconButton(onClick = { onPasswordEntered(unEnteredPassword.value) }) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.Send,
+                    contentDescription = LocalContext.current.getString(R.string.lecture_password_send_description)
+                )
             }
         },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Ascii),
@@ -187,13 +194,23 @@ fun LecturePasswordInput(onPasswordEntered: (String) -> Unit) {
 @Preview
 @Composable
 fun CurrentLecturePreview() {
-    CurrentLecture(title = "キャリア形成B2", period = LecturePeriod(1), onPasswordEntered = {}, modifier = Modifier)
+    CurrentLecture(
+        title = "キャリア形成B2",
+        period = LecturePeriod(1),
+        onPasswordEntered = {},
+        modifier = Modifier
+    )
 }
 
 @Composable
-fun CurrentLecture(title: String, period: LecturePeriod, onPasswordEntered: (String) -> Unit, modifier: Modifier) {
+fun CurrentLecture(
+    title: String,
+    period: LecturePeriod,
+    onPasswordEntered: (String) -> Unit,
+    modifier: Modifier
+) {
     Card(modifier = modifier.fillMaxWidth()) {
-        Column (modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier.padding(16.dp)) {
             LectureTitleText(title = title)
             LecturePeriodText(period = period)
             LecturePasswordInput(onPasswordEntered)
